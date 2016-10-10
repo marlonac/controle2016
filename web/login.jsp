@@ -32,10 +32,10 @@
       <form class="form-signin">
         <h2 class="form-signin-heading">Informe seus dados</h2>
         
-        <label for="inputEmail" class="sr-only">Email address</label>
+        <label for="inputEmail" class="sr-only">Email</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
         
-        <label for="inputPassword" class="sr-only">Password</label>
+        <label for="inputPassword" class="sr-only">Senha</label>
         <input type="password" id="inputPassword" class="form-control" placeholder="Password" required> <br>
         <button class="btn btn-lg btn-primary" type="submit">Entrar</button>
         
