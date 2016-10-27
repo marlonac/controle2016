@@ -1,0 +1,98 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package dao;
+
+import controle.UsuarioImpl;
+import java.util.List;
+import java.util.Scanner;
+
+import modelo.Usuario;
+/**
+ *
+ * @author Marlon
+ */
+public class Main {
+
+    /**
+     * @param args the command line arguments
+     */
+	public static void main(String[] args) {
+                UsuarioImpl usuarioImpl = new UsuarioImpl() {
+                    @Override
+                    public void remover(Usuario usuario) {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+
+                    @Override
+                    public List<Usuario> getListAll() {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+
+                    @Override
+                    public Usuario findById(int id) {
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                };
+		
+                Scanner in = new Scanner(System.in);
+                for (int i = 0; i < 3; i++) {
+                    Usuario u = new Usuario();
+                    System.out.print("Nome: ");
+                    u.setNome(in.next());
+                    
+                    System.out.print("Telefone: ");
+                    u.setPhone(in.next());
+                    
+                     System.out.print("Cpf: ");
+                    u.setCpf(in.next());
+                    
+                     System.out.print("Sexo: ");
+                    u.setSexo(in.next());
+                    
+                       System.out.print("Senha: ");
+                    u.setSenha(in.next());
+                    
+                    usuarioImpl.salvar(u);
+                }
+                List<Usuario> list = usuarioImpl.getListAll();
+		String msg = ("ID\t"+f("Nome")+"\t"+f("Telefone")
+                        +"\t"+f("Cpf")+"\t"+f("sexo")+"\t"+f("senha"));
+		System.out.println(msg);
+		
+                for (int i = 0; i < msg.length(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+		out(list);
+		
+                System.out.print("Escolha um id para pesquisa: ");
+                Usuario a = usuarioImpl.findById(in.nextInt());
+				
+		System.out.println("\n"+msg);
+		for (int i = 0; i < msg.length(); i++) {
+			System.out.print("-");
+		}
+		System.out.println();
+		System.out.println(a.getId()+"\t"+f(a.getNome())+"\t"+a.getPhone()
+                +"\t"+f(a.getCpf())+"\t"+f(a.getSexo())+"\t"+f(a.getSenha()));
+	}
+
+	private static String f(String s) {
+			for (int i = s.length(); i < 30; i++) {
+				s+=" ";
+			}
+		return s;
+	}
+
+	private static void out(List<Usuario> list) {
+		for (Usuario usuario : list) {
+			System.out.println(usuario.getId()+"\t"+f(usuario.getNome()+"\t"+usuario.getPhone()
+                        +"\t"+usuario.getCpf()+"\t")+usuario.getSexo()+"\t"+usuario.getSenha());
+		}
+		
+	}
+
+}
