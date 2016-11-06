@@ -68,17 +68,17 @@
         <label for="name">Nome</label>
         <input class="form-control" id="name" type="text" required=""><br>
 
-         <label for="sexo">Sexo</label>
-         <!-- navegação para selecionar o sexo do usuario -->
+        <label for="sexo">Sexo</label> <br>
+         <input type="radio" name="no" value="valor"/> Masculino
+         <input type="radio" name="nome_do_grupo" value="valor"/> Feminino <br><br>
+         <!-- navegação para selecionar o sexo do usuario
                 <select class="form-control" id="sexo" type="text"><br>
           <option>Selecione uma OPÇÃO</option>
           <option>Masculino</option>
           <option>Feminino</option>
-        </select>
+        </select> -->
                
-        <label for="address">Endereço</label>
-        <input class="form-control" id="address" type="text" required="">
-
+   
          <label for="phone">Telefone</label>
         <input class="form-control" id="phone" type="text" required=""><br>
 
@@ -87,13 +87,23 @@
 
            <label for="cpf">CPF</label>
         <input class="form-control" id="cpf" type="text" required=""><br>
-
-           <label for="password">Senha</label>
-        <input class="form-control" id="password" type="password" required=""><br>
         
-         <label for="password">Confirmar Senha</label>
-        <input class="form-control" id="password" type="password" required=""><br>
+        <label for="logradouro">Endereço</label>
+        <input class="form-control" id="logradouro" type="text" required=""><br>
+      
+       
+        <label for="cep">CEP</label>
+        <input class="form-control" id="cep" type="text" required=""><br>
+   
 
+           <label for="bairro">Bairro</label>
+        <input class="form-control" id="bairro" type="text" required=""><br>
+        
+         <label for="password">Senha</label>
+        <input class="form-control" id="password" type="password" required=""><br>
+           
+        <label for="password">Confirmar Senha</label>
+        <input class="form-control" id="password" type="password" required=""><br>
         <!--butoes do formulario-->
         <button type="submit" class="btn btn-primary">Cadastrar</button>
         
