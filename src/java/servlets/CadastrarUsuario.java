@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Usuario;
 
 /**
  *
@@ -73,6 +74,40 @@ public class CadastrarUsuario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+        Usuario usuario = new Usuario(); //cria o objeto para usuario
+        int id=0;
+        if(request.getParameter("id") !=null)
+            id = Integer.valueOf(request.getParameter("id"));
+        
+        //preencher o objeto usuario
+        usuario.setNome(request.getParameter("nome"));
+        usuario.setPhone(request.getParameter("phone"));
+        usuario.setCpf(request.getParameter("cpf"));
+        usuario.setSexo(request.getParameter("sexo"));
+        usuario.setSenha(request.getParameter("senha"));
+        usuario.setLogradouro(request.getParameter("logradouro"));
+        usuario.setCep(request.getParameter("cep"));
+        usuario.setBairro(request.getParameter("bairro"));
+        
+      
+        /*
+        Cidade cidade = new Cidade();
+        cidade.setId(Integer.valueOf(request.getParameter("cidade")));
+        contato.setCidade(cidade);
+        ContatoImpl contatoDao = new ContatoImpl();//cria o objeto contatoDao
+        
+        //salva ou altera
+        if(id != 0){
+            contato.setId(id);
+            contatoDao.atualizar(contato);
+        }else
+            contatoDao.salvar(contato);
+        //retorna pra a tela de cadastro
+        response.sendRedirect("listar.jsp");
+        
+    }
+        */
     }
 
     /**

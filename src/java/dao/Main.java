@@ -20,7 +20,9 @@ public class Main {
      * @param args the command line arguments
      */
 	public static void main(String[] args) {
-                UsuarioImpl usuarioImpl = new UsuarioImpl() {
+       
+
+            UsuarioImpl usuarioImpl = new UsuarioImpl() {
                     @Override
                     public void remover(Usuario usuario) {
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -96,3 +98,4 @@ public class Main {
 	}
 
 }
+

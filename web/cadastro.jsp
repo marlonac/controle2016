@@ -66,7 +66,7 @@
  
       <div class="col-xs-6">
         <label for="name">Nome</label>
-        <input class="form-control" id="name" type="text"><br>
+        <input class="form-control" id="name" type="text" required=""><br>
 
          <label for="sexo">Sexo</label>
          <!-- navegação para selecionar o sexo do usuario -->
@@ -77,19 +77,22 @@
         </select>
                
         <label for="address">Endereço</label>
-        <input class="form-control" id="address" type="text">
+        <input class="form-control" id="address" type="text" required="">
 
          <label for="phone">Telefone</label>
-        <input class="form-control" id="phone" type="text"><br>
+        <input class="form-control" id="phone" type="text" required=""><br>
 
          <label for="email">E-mail</label>
-        <input class="form-control" id="email" type="text">
+        <input class="form-control" id="email" type="text" required="">
 
            <label for="cpf">CPF</label>
-        <input class="form-control" id="cpf" type="text"><br>
+        <input class="form-control" id="cpf" type="text" required=""><br>
 
-           <label for="password">Senhaa</label>
-        <input class="form-control" id="password" type="password"><br>
+           <label for="password">Senha</label>
+        <input class="form-control" id="password" type="password" required=""><br>
+        
+         <label for="password">Confirmar Senha</label>
+        <input class="form-control" id="password" type="password" required=""><br>
 
         <!--butoes do formulario-->
         <button type="submit" class="btn btn-primary">Cadastrar</button>

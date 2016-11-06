@@ -21,7 +21,7 @@ public class ConnectionFactory {
             return DriverManager.getConnection(
             		"jdbc:mysql://localhost/controle", "root", "");
         } catch (SQLException | ClassNotFoundException e) {
-            throw new RuntimeException(e);
+            throw new RuntimeException("Erro ClassNotFoundException  em conectionFactory",e);
         }
 	}
 
