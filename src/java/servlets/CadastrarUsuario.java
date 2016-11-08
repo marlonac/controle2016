@@ -5,8 +5,10 @@
  */
 package servlets;
 
+import controle.UsuarioImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -90,34 +92,26 @@ public class CadastrarUsuario extends HttpServlet {
         usuario.setCep(request.getParameter("cep"));
         usuario.setBairro(request.getParameter("bairro"));
         
-      
-        /*
-        Cidade cidade = new Cidade();
-        cidade.setId(Integer.valueOf(request.getParameter("cidade")));
-        contato.setCidade(cidade);
-        ContatoImpl contatoDao = new ContatoImpl();//cria o objeto contatoDao
-        
-        //salva ou altera
+        UsuarioImpl usuarioDao = new UsuarioImpl() {
+            @Override
+            public List<Usuario> getListAll() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public Usuario findById(int id) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+              //salva ou altera
         if(id != 0){
-            contato.setId(id);
-            contatoDao.atualizar(contato);
+            usuario.setId(id);
+            usuarioDao.atualizar(usuario);
         }else
-            contatoDao.salvar(contato);
-        //retorna pra a tela de cadastro
-        response.sendRedirect("listar.jsp");
+            usuario.salvar(usuario);
         
+        //retorna pra a tela de cadastro
+        response.sendRedirect("cadastro.jsp");
+        
+    }        
     }
-        */
-    }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-}

@@ -91,6 +91,14 @@ public class Usuario {
     public void setBairro(String bairro) {
         this.bairro = bairro;
     }
+
+    public void atualizar(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void salvar(Usuario usuario) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     
 }

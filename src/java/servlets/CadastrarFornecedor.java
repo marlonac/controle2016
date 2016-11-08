@@ -5,13 +5,17 @@
  */
 package servlets;
 
+import controle.FornecedorImpl;
+import dao.FornecedorDao;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Fornecedor;
 
 /**
  *
@@ -73,16 +77,75 @@ public class CadastrarFornecedor extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+        
+     
+   
+    Fornecedor fornecedor = new Fornecedor(); //cria o objeto para usuario
+        int id=0;
+        if(request.getParameter("id") !=null)
+            id = Integer.valueOf(request.getParameter("id"));
+        
+        //preencher o objeto usuario
+        fornecedor.setNome(request.getParameter("nome"));
+        fornecedor.setEmail(request.getParameter("email"));
+        fornecedor.setPhone(request.getParameter("phone"));
+        fornecedor.setCnpj(request.getParameter("cnpj"));
+        fornecedor.setLogradouro(request.getParameter("logradouro"));
+        fornecedor.setCep(request.getParameter("cep"));
+        fornecedor.setBairro(request.getParameter("bairro"));
+        
+        //alterar para fornecedorIml
+        FornecedorImpl fornecedorDao = new FornecedorImpl() {
+            
+            public List<Fornecedor> getListAll() {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public Fornecedor findById(int id) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public void salvar(FornecedorDao fornecedor) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public void atualizar(FornecedorDao fornecedor) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            public void remover(FornecedorDao fornecedor) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void salvar(Fornecedor fornecedor) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void atualizar(Fornecedor fornecedor) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+
+            @Override
+            public void remover(Fornecedor fornecedor) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            }
+        };
+              //salva ou altera
+        if(id != 0){
+            fornecedor.setId(id);
+            fornecedorDao.atualizar(fornecedor);
+        }else
+            fornecedor.salvar(fornecedor);
+        
+        //retorna pra a tela de cadastro
+        response.sendRedirect("fornecedor.jsp");
+        
+    }        
+
+    private void Fornecedor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
-}
+   
+ }
