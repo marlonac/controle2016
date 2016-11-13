@@ -15,6 +15,7 @@ public class Usuario {
     private String phone;
     private String cpf;
     private String sexo;
+    private String login;
     private String senha;
     private String logradouro;
     private String cep;
@@ -92,13 +93,14 @@ public class Usuario {
         this.bairro = bairro;
     }
 
-    public void atualizar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String getLogin() {
+        return login;
     }
 
-    public void salvar(Usuario usuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void setLogin(String login) {
+        this.login = login;
     }
-    
+
+
     
 }

@@ -22,7 +22,7 @@ import modelo.Usuario;
  *
  * @author Marlon
  */
-public abstract class UsuarioImpl implements UsuarioDao {
+public class UsuarioImpl implements UsuarioDao {
 
     Connection conn = ConnectionFactory.getConnection();
     PreparedStatement stmt;
@@ -32,7 +32,7 @@ public abstract class UsuarioImpl implements UsuarioDao {
     public void salvar(Usuario usuario) {
         try {
             String sql = "insert into usuario "
-                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro) values(?,?,?,?,?,?,?,?)";
+                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro, login) values(?,?,?,?,?,?,?,?,?)";
 
             stmt = conn.prepareStatement(sql);
 
@@ -44,6 +44,7 @@ public abstract class UsuarioImpl implements UsuarioDao {
             stmt.setString(6, usuario.getLogradouro());
             stmt.setString(7, usuario.getCep());
             stmt.setString(8, usuario.getBairro());
+             stmt.setString(9, usuario.getLogin());
 
             stmt.execute();
         } catch (SQLException e) {
@@ -55,7 +56,7 @@ public abstract class UsuarioImpl implements UsuarioDao {
     public void atualizar(Usuario usuario) {
         try {
             String sql = "insert into usuario "
-                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro) values(?,?,?,?,?,?,?,?)"
+                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro) values(?,?,?,?,?,?,?,?) "
                     + "where id = ?";
             stmt = conn.prepareStatement(sql);
 
@@ -88,4 +89,14 @@ public void remover(Usuario usuario){
         
     }
 }
+
+    @Override
+    public List<Usuario> getListAll() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Usuario findById(int id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

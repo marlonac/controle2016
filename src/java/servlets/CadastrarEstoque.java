@@ -5,23 +5,20 @@
  */
 package servlets;
 
-import controle.UsuarioImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuario;
 
 /**
  *
  * @author Marlon
  */
-@WebServlet(name = "CadastrarUsuario", urlPatterns = {"/cadastrarusuario"})
-public class CadastrarUsuario extends HttpServlet {
+@WebServlet(name = "CadastrarEstoque", urlPatterns = {"/cadastrarEstoque"})
+public class CadastrarEstoque extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +37,10 @@ public class CadastrarUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CadastrarUsuario</title>");            
+            out.println("<title>Servlet CadastrarEstoque</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CadastrarUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CadastrarEstoque at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,34 +72,17 @@ public class CadastrarUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        Usuario usuario = new Usuario(); //cria o objeto para usuario
-        int id=0;
-        if(request.getParameter("id") !=null)
-            id = Integer.valueOf(request.getParameter("id"));
-        
-        //preencher o objeto usuario
-        usuario.setNome(request.getParameter("nome"));
-        usuario.setPhone(request.getParameter("phone"));
-        usuario.setCpf(request.getParameter("cpf"));
-        usuario.setSexo(request.getParameter("sexo"));
-        usuario.setLogin(request.getParameter("login"));
-        usuario.setSenha(request.getParameter("senha"));
-        usuario.setLogradouro(request.getParameter("logradouro"));
-        usuario.setCep(request.getParameter("cep"));
-        usuario.setBairro(request.getParameter("bairro"));
-        
-        UsuarioImpl usuarioDao = new UsuarioImpl();
-              //salva ou altera
-        if(id != 0){
-            usuario.setId(id);
-            usuarioDao.atualizar(usuario);
-        }else
-            usuarioDao.salvar(usuario);
-        
-        //retorna pra a tela de cadastro
-        response.sendRedirect("cadastro.jsp");
-        
-    }        
+        processRequest(request, response);
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

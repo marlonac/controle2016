@@ -105,7 +105,7 @@ width:35%;
 
 
         <a
-        <button class="btn btn btn-warning" type="submit" href="cadastro.html">Novo Usuário</button> </a>
+        <button class="btn btn btn-warning" type="submit" href="cadastro.jsp">Novo Usuário</button> </a>
 
         <!--
         <a href="cadastro.html" class="btn btn-warning" role="button">Novo Usário</a> -->

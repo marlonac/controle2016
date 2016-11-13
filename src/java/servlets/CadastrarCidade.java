@@ -5,23 +5,22 @@
  */
 package servlets;
 
-import controle.UsuarioImpl;
+import controle.CidadeImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import modelo.Cidade;
 
 /**
  *
  * @author Marlon
  */
-@WebServlet(name = "CadastrarUsuario", urlPatterns = {"/cadastrarusuario"})
-public class CadastrarUsuario extends HttpServlet {
+@WebServlet(name = "CadastrarCidade", urlPatterns = {"/cadastrarcidade"})
+public class CadastrarCidade extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class CadastrarUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CadastrarUsuario</title>");            
+            out.println("<title>Servlet CadastrarCidade</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CadastrarUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CadastrarCidade at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,34 +74,37 @@ public class CadastrarUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+      
+        //recupera as informações da pagina cadastrarcidade.jsp
+        int idEstado = Integer.valueOf(request.getParameter("estado"));
+        String nomeCidade = request.getParameter("cidade");
         
+        //cria o objeto para manipular e salvar no banco
+        CidadeImpl cidadeImpl = new CidadeImpl();
         
-        Usuario usuario = new Usuario(); //cria o objeto para usuario
-        int id=0;
-        if(request.getParameter("id") !=null)
-            id = Integer.valueOf(request.getParameter("id"));
+        //popula o objeto cidade
+        Cidade cidade = new Cidade();
+        cidade.setNome(nomeCidade);
         
-        //preencher o objeto usuario
-        usuario.setNome(request.getParameter("nome"));
-        usuario.setPhone(request.getParameter("phone"));
-        usuario.setCpf(request.getParameter("cpf"));
-        usuario.setSexo(request.getParameter("sexo"));
-        usuario.setLogin(request.getParameter("login"));
-        usuario.setSenha(request.getParameter("senha"));
-        usuario.setLogradouro(request.getParameter("logradouro"));
-        usuario.setCep(request.getParameter("cep"));
-        usuario.setBairro(request.getParameter("bairro"));
+        //relaciona cidade com estado
+        cidade.getEstado().setId(idEstado);
         
-        UsuarioImpl usuarioDao = new UsuarioImpl();
-              //salva ou altera
-        if(id != 0){
-            usuario.setId(id);
-            usuarioDao.atualizar(usuario);
-        }else
-            usuarioDao.salvar(usuario);
+        //salva no banco
+        cidadeImpl.salvar(cidade);
         
-        //retorna pra a tela de cadastro
-        response.sendRedirect("cadastro.jsp");
+        //retorna para tela de cadastro
+        response.sendRedirect("cadastrarcidade.jsp");
         
-    }        
     }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

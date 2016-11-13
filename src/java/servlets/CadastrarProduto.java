@@ -5,7 +5,7 @@
  */
 package servlets;
 
-import controle.UsuarioImpl;
+import controle.ProdutoImpl;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -14,14 +14,14 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import modelo.Usuario;
+import modelo.Produto;
 
 /**
  *
  * @author Marlon
  */
-@WebServlet(name = "CadastrarUsuario", urlPatterns = {"/cadastrarusuario"})
-public class CadastrarUsuario extends HttpServlet {
+@WebServlet(name = "CadastrarProduto", urlPatterns = {"/cadastrarproduto"})
+public class CadastrarProduto extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +40,10 @@ public class CadastrarUsuario extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet CadastrarUsuario</title>");            
+            out.println("<title>Servlet CadastrarProduto</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet CadastrarUsuario at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet CadastrarProduto at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -75,34 +75,30 @@ public class CadastrarUsuario extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-        
-        Usuario usuario = new Usuario(); //cria o objeto para usuario
+      
+        Produto produto = new Produto(); //cria o objeto para produto
         int id=0;
         if(request.getParameter("id") !=null)
             id = Integer.valueOf(request.getParameter("id"));
         
         //preencher o objeto usuario
-        usuario.setNome(request.getParameter("nome"));
-        usuario.setPhone(request.getParameter("phone"));
-        usuario.setCpf(request.getParameter("cpf"));
-        usuario.setSexo(request.getParameter("sexo"));
-        usuario.setLogin(request.getParameter("login"));
-        usuario.setSenha(request.getParameter("senha"));
-        usuario.setLogradouro(request.getParameter("logradouro"));
-        usuario.setCep(request.getParameter("cep"));
-        usuario.setBairro(request.getParameter("bairro"));
+        produto.setDescricao(request.getParameter("descricao"));
+        produto.setPreco(request.getParameter("preco"));
+        produto.setQuantidade(request.getParameter("quantidade"));
+        produto.setDataCadastro(request.getParameter("dataCadastro"));
+       
         
-        UsuarioImpl usuarioDao = new UsuarioImpl();
+        ProdutoImpl produtoDao = new ProdutoImpl(); 
+      
               //salva ou altera
         if(id != 0){
-            usuario.setId(id);
-            usuarioDao.atualizar(usuario);
+            produto.setId(id);
+            produtoDao.atualizar(produto);
         }else
-            usuarioDao.salvar(usuario);
+            produtoDao.salvar(produto);
         
         //retorna pra a tela de cadastro
-        response.sendRedirect("cadastro.jsp");
+        response.sendRedirect("produto.jsp");
         
     }        
     }

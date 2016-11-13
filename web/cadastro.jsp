@@ -61,7 +61,7 @@
   <div class="container">
  
 <!--formulario de cadastro de usuarios -->
-  <form>
+  <form action="cadastrarusuario" method="post">
     <div class="form-group">
  
       <div class="col-xs-6">
@@ -98,6 +98,9 @@
 
            <label for="bairro">Bairro</label>
         <input class="form-control" id="bairro" type="text" required=""><br>
+        
+        <label for="login">Login</label>
+        <input class="form-control" id=login type="text" required=""><br>
         
          <label for="password">Senha</label>
         <input class="form-control" id="password" type="password" required=""><br>
