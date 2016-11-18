@@ -87,7 +87,7 @@ public class CadastrarCidade extends HttpServlet {
         cidade.setNome(nomeCidade);
         
         //relaciona cidade com estado
-        cidade.getEstado().setId(idEstado);
+        cidade.getEstado().setId(nomeCidade);
         
         //salva no banco
         cidadeImpl.salvar(cidade);

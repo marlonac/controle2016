@@ -20,6 +20,15 @@ public class Usuario {
     private String logradouro;
     private String cep;
     private String bairro;
+    private Cidade cidade; 
+
+    public Cidade getCidade() {
+        return cidade;
+    }
+    
+    public void setCidade(Cidade cidade){
+        this.cidade = cidade;
+    }
 
     public int getId() {
         return id;
@@ -100,7 +109,4 @@ public class Usuario {
     public void setLogin(String login) {
         this.login = login;
     }
-
-
-    
 }

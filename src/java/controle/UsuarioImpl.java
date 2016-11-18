@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import modelo.Usuario;
 
+
 /**
  *
  * @author Marlon
@@ -32,7 +33,7 @@ public class UsuarioImpl implements UsuarioDao {
     public void salvar(Usuario usuario) {
         try {
             String sql = "insert into usuario "
-                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro, login) values(?,?,?,?,?,?,?,?,?)";
+                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro, login, idcidade) values(?,?,?,?,?,?,?,?,?,?)";
 
             stmt = conn.prepareStatement(sql);
 
@@ -44,7 +45,8 @@ public class UsuarioImpl implements UsuarioDao {
             stmt.setString(6, usuario.getLogradouro());
             stmt.setString(7, usuario.getCep());
             stmt.setString(8, usuario.getBairro());
-             stmt.setString(9, usuario.getLogin());
+            stmt.setString(9, usuario.getLogin());
+            stmt.setInt(10, usuario.getCidade().getId());
 
             stmt.execute();
         } catch (SQLException e) {

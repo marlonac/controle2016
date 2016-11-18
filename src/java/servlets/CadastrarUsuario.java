@@ -14,6 +14,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.Cidade;
 import modelo.Usuario;
 
 /**
@@ -92,6 +93,11 @@ public class CadastrarUsuario extends HttpServlet {
         usuario.setLogradouro(request.getParameter("logradouro"));
         usuario.setCep(request.getParameter("cep"));
         usuario.setBairro(request.getParameter("bairro"));
+        
+        Cidade cidade = new Cidade();
+        cidade.setId(Integer.valueOf(request.getParameter("idcidade")));
+        
+        usuario.setCidade(cidade);
         
         UsuarioImpl usuarioDao = new UsuarioImpl();
               //salva ou altera

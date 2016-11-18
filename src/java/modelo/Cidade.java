@@ -13,6 +13,12 @@ public class Cidade {
     
     private int id;
     private String nome;
+    private Estado estado;
+    
+      public Cidade() {
+        estado = new Estado();
+    }
+    
 
     public int getId() {
         return id;
@@ -30,7 +36,12 @@ public class Cidade {
         this.nome = nome;
     }
 
-    public Object getEstado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+   public Estado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Estado estado) {
+        this.estado = estado;
+    
     }
 }
