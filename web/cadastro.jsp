@@ -76,9 +76,9 @@
                                                 <label for="phone">Telefone</label>
                                                 <input class="form-control" id="phone"  name="phone" type="text" required=""><br>
 
-                                                <label for="email">E-mail</label>
+                                               <!-- <label for="email">E-mail</label>
                                                 <input class="form-control" id="email" name="email" type="text" required="">
-
+                                                    -->
                                                 <label for="cpf">CPF</label>
                                                 <input class="form-control" id="cpf" name="cpf" type="text" placeholder="Somente Numeros"required=""><br>
 
@@ -112,7 +112,7 @@
                                                 <label for="senha">Senha</label>
                                                 <input class="form-control"  id="senha" name="senha" type="password" required=""><br>
 
-                                                <label for="senha">Confirmar Senha</label>
+                                             <!--   <label for="senha">Confirmar Senha</label>
                                                 <input class="form-control"  id="senha" name="senha" type="password" required=""><br>
                                                 <!--butoes do formulario-->
                                                 <button type="submit" class="btn btn-primary">Cadastrar</button>

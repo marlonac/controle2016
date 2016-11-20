@@ -57,11 +57,22 @@ public class Main {
                        System.out.print("Senha: ");
                     u.setSenha(in.next());
                     
+                    System.out.print("Endereço: ");
+                    u.setLogradouro(in.next());
+                    
+                    System.out.print("Cep: ");
+                    u.setCep(in.next());
+                    
+                    System.out.print("Bairro: ");
+                    u.setBairo(in.next());
+                    
+          
+                    
                     usuarioImpl.salvar(u);
                 }
                 List<Usuario> list = usuarioImpl.getListAll();
 		String msg = ("ID\t"+f("Nome")+"\t"+f("Telefone")
-                        +"\t"+f("Cpf")+"\t"+f("sexo")+"\t"+f("senha"));
+                        +"\t"+f("Cpf")+"\t"+f("sexo")+"\t"+f("login")+"\t"+f("senha")+"t"+f("Endereço")+"\t"+f("cep")+"\t"+f("bairro"));
 		System.out.println(msg);
 		
                 for (int i = 0; i < msg.length(); i++) {
@@ -71,15 +82,16 @@ public class Main {
 		out(list);
 		
                 System.out.print("Escolha um id para pesquisa: ");
-                Usuario a = usuarioImpl.findById(in.nextInt());
+                Usuario usuario = usuarioImpl.findById(in.nextInt());
 				
 		System.out.println("\n"+msg);
 		for (int i = 0; i < msg.length(); i++) {
 			System.out.print("-");
 		}
 		System.out.println();
-		System.out.println(a.getId()+"\t"+f(a.getNome())+"\t"+a.getPhone()
-                +"\t"+f(a.getCpf())+"\t"+f(a.getSexo())+"\t"+f(a.getSenha()));
+		System.out.println(usuario.getId()+"\t"+f(usuario.getNome())+"\t"+usuario.getPhone()
+                +"\t"+f(usuario.getCpf())+"\t"+f(usuario.getSexo())+"\t"+f(usuario.getLogin())+"\t"+f(usuario.getSenha())+"\t"+f(usuario.getLogradouro())+"\t"+f(usuario.getCep())+
+                        "\t"+f(usuario.getBairro()));
 	}
 
 	private static String f(String s) {
@@ -92,7 +104,9 @@ public class Main {
 	private static void out(List<Usuario> list) {
 		for (Usuario usuario : list) {
 			System.out.println(usuario.getId()+"\t"+f(usuario.getNome()+"\t"+usuario.getPhone()
-                        +"\t"+usuario.getCpf()+"\t")+usuario.getSexo()+"\t"+usuario.getSenha());
+                        +"\t"+usuario.getCpf()+"\t")+usuario.getSexo()+"\t"+f(usuario.getLogin()+
+                                "\t"+usuario.getSenha()+"\t"+usuario.getLogradouro()+
+                                "t"+usuario.getCep()+"\t"+usuario.getBairro()));
 		}
 		
 	}

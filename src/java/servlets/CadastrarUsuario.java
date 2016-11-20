@@ -104,6 +104,9 @@ public class CadastrarUsuario extends HttpServlet {
         if(id != 0){
             usuario.setId(id);
             usuarioDao.atualizar(usuario);
+            //atualizar usuario
+             response.sendRedirect("listarusuario.jsp");
+            
         }else
             usuarioDao.salvar(usuario);
         

@@ -16,6 +16,7 @@ import dao.UsuarioDao;
 import dao.ConnectionFactory;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import modelo.Cidade;
 import modelo.Usuario;
 
 
@@ -28,6 +29,7 @@ public class UsuarioImpl implements UsuarioDao {
     Connection conn = ConnectionFactory.getConnection();
     PreparedStatement stmt;
     ResultSet rs;
+   
 
     @Override
     public void salvar(Usuario usuario) {
@@ -58,7 +60,7 @@ public class UsuarioImpl implements UsuarioDao {
     public void atualizar(Usuario usuario) {
         try {
             String sql = "insert into usuario "
-                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro) values(?,?,?,?,?,?,?,?) "
+                    + "(nome, phone, cpf, sexo, senha, logradouro, cep, bairro,,login idcidade) values(?,?,?,?,?,?,?,?,?,?) "
                     + "where id = ?";
             stmt = conn.prepareStatement(sql);
 
@@ -70,6 +72,8 @@ public class UsuarioImpl implements UsuarioDao {
             stmt.setString(6, usuario.getLogradouro());
             stmt.setString(7, usuario.getCep());
             stmt.setString(8, usuario.getBairro());
+            stmt.setString(9, usuario.getLogin());
+             stmt.setInt(10, usuario.getCidade().getId());
 
             stmt.execute();
         } catch (SQLException e) {
@@ -94,11 +98,76 @@ public void remover(Usuario usuario){
 
     @Override
     public List<Usuario> getListAll() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            List<Usuario> list = new ArrayList<>();
+        try {
+            //ver se é id ou idusuario
+            String sql = "select id, nome, phone, cpf, login, senha, logradouro, cep,bairro, idcidade from usuario";
+            stmt = conn.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                
+                Usuario u = new Usuario();
+                u.setId(rs.getInt(1));
+                u.setNome(notNull(rs.getString(2)));
+                u.setPhone(notNull(rs.getString(3)));
+                u.setCpf(notNull(rs.getString(4)));
+                u.setSenha(notNull(rs.getString(5)));
+                u.setLogradouro(notNull(rs.getString(6)));
+                u.setCep(notNull(rs.getString(7)));
+                u.setBairro(notNull(rs.getString(8)));
+                u.setLogin(notNull(rs.getString(9)));
+             
+            
+                //cria um objeto cidade
+                Cidade cidade = new CidadeImpl().findById((rs.getInt(10)));
+
+                //pesquiss e retorna as informações da cidade do contato
+                u.setCidade(cidade);
+//                                System.out.println("id da cidade:"+rs.getInt(4));
+                list.add((Usuario) (u));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+ @Override
+    public Usuario findById(int id) {
+        String sql = "select id, nome, phone, cpf, login, senha, logradouro, cep, senha, idcidade"
+                + "from usuario where id = ?";
+        Usuario u = new Usuario();
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            rs.next();
+            u.setId(rs.getInt(1));
+                u.setNome(notNull(rs.getString(2)));
+                u.setPhone(notNull(rs.getString(3)));
+                u.setCpf(notNull(rs.getString(4)));
+                u.setSenha(notNull(rs.getString(5)));
+                u.setLogradouro(notNull(rs.getString(6)));
+                u.setCep(notNull(rs.getString(7)));
+                u.setBairro(notNull(rs.getString(8)));
+                u.setLogin(notNull(rs.getString(9)));
+            
+
+                //cria um objeto cidade
+                Cidade cidade = new CidadeImpl().findById((rs.getInt(10)));
+
+   
+
+            //pesquiss e retorna as informações da cidade do contato
+            u.setCidade(cidade);
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return u;
     }
 
-    @Override
-    public Usuario findById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public String notNull(String msg) {
+        return (msg == null ? "" : msg);
     }
+
 }

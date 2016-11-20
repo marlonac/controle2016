@@ -1,13 +1,3 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-/**
- * Author:  Marlon
- * Created: 08/11/2016
- */
-
 -- MySQL Workbench Forward Engineering
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
@@ -120,7 +110,7 @@ CREATE TABLE IF NOT EXISTS `controle`.`produto` (
   `descricao` VARCHAR(45) NOT NULL,
   `marca_idmarca` INT NOT NULL,
   `preco` DECIMAL(12,2) NOT NULL,
-  `quanidade` INT NOT NULL,
+  `quantidade` INT NOT NULL,
   `dataCadastro` DATETIME NOT NULL,
   `fornecedor_idfornecedor` INT NOT NULL,
   PRIMARY KEY (`idproduto`),

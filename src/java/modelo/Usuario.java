@@ -109,4 +109,8 @@ public class Usuario {
     public void setLogin(String login) {
         this.login = login;
     }
+
+    public void setBairo(String next) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
