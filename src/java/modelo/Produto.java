@@ -14,7 +14,7 @@ public class Produto {
     //dados todos tipo string?
     private  int id;
     private String descricao;
-    private String preco;
+    private float preco;
     private String quantidade;
     private String dataCadastro;
 
@@ -34,11 +34,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public String getPreco() {
+    public Float getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(Float preco) {
         this.preco = preco;
     }
 
@@ -56,6 +56,10 @@ public class Produto {
 
     public void setDataCadastro(String dataCadastro) {
         this.dataCadastro = dataCadastro;
+    }
+
+    public void setFloat(String parameter) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
 }

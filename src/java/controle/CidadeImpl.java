@@ -28,6 +28,7 @@ public class CidadeImpl implements CidadeDao {
     ResultSet rs;
 
   
+     @Override
     public void salvar(Cidade cidade) {
         try {
             String sql = "insert into cidade "
@@ -98,12 +99,32 @@ public void remover(Cidade cidade){
             ex.printStackTrace();
         }
         return listCidades;
-    }
-
-    @Override
+    }    
     public Cidade findById(int id) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        String sql = "SELECT cidade.id, cidade.nome, cidade.idestado, estado.nome FROM cidade, estado "
+                + " WHERE cidade.idestado = estado.id AND cidade.id = ?";
+        Cidade c = new Cidade();
+        try {
+            stmt = conn.prepareStatement(sql);
+            stmt.setInt(1, id);
+            rs = stmt.executeQuery();
+            
+            rs.next();
+            c.setId(rs.getInt(1));
+            c.setNome(notNull(rs.getString(2)));
+            
+            c.getEstado().setId(rs.getInt(3));
+            c.getEstado().setNome(notNull(rs.getString(4)));
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(CidadeImpl.class.getName()).log(Level.SEVERE, null, ex);
+            ex.printStackTrace();
+        }
+        
+        return c;
     }
-
     
+    public String notNull(String msg){
+        return (msg == null? "" : msg);
+    }
 }

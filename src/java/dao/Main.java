@@ -23,20 +23,7 @@ public class Main {
        
 
             UsuarioImpl usuarioImpl = new UsuarioImpl() {
-                    @Override
-                    public void remover(Usuario usuario) {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-
-                    @Override
-                    public List<Usuario> getListAll() {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-
-                    @Override
-                    public Usuario findById(int id) {
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
+                
                 };
 		
                 Scanner in = new Scanner(System.in);

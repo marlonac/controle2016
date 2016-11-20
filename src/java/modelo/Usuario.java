@@ -11,6 +11,7 @@ package modelo;
  */
 public class Usuario {
     private int id;
+   
     private String nome;
     private String phone;
     private String cpf;
@@ -22,6 +23,8 @@ public class Usuario {
     private String bairro;
     private Cidade cidade; 
 
+
+    
     public Cidade getCidade() {
         return cidade;
     }
@@ -113,4 +116,6 @@ public class Usuario {
     public void setBairo(String next) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
+
 }
+

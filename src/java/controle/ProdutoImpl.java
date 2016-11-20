@@ -35,7 +35,7 @@ public class ProdutoImpl implements ProdutoDao {
 
             // verificar formato de dadoi float 
             stmt.setString(1, produto.getDescricao());
-            stmt.setString(2, produto.getPreco());
+            stmt.setFloat(2, produto.getPreco());
             stmt.setString(3, produto.getQuantidade());
             stmt.setString(4, produto.getDataCadastro());
            
@@ -57,7 +57,7 @@ public class ProdutoImpl implements ProdutoDao {
        
 
             stmt.setString(1, produto.getDescricao());
-            stmt.setString(2, produto.getPreco());
+            stmt.setFloat(2, produto.getPreco());
             stmt.setString(3, produto.getQuantidade());
             stmt.setString(4, produto.getDataCadastro());
            

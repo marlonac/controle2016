@@ -15,7 +15,8 @@ import modelo.Cidade;
 public interface CidadeDao {
     
         public void salvar(Cidade cidade);
-	public void atualizar(Cidade cidade);
+
+    public void atualizar(Cidade cidade);
 	public void remover(Cidade cidade);
 	public List<Cidade> getListAll();
 	public Cidade findById(int id);   

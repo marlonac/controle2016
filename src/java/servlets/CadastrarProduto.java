@@ -83,7 +83,7 @@ public class CadastrarProduto extends HttpServlet {
         
         //preencher o objeto usuario
         produto.setDescricao(request.getParameter("descricao"));
-        produto.setPreco(request.getParameter("preco"));
+        produto.setFloat(request.getParameter("preco"));
         produto.setQuantidade(request.getParameter("quantidade"));
         produto.setDataCadastro(request.getParameter("dataCadastro"));
        
